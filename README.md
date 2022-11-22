@@ -1,5 +1,5 @@
 # hello-wolfi-demo
-Demo for the Hello Wolfi workshop
+Demo for the [Hello Wolfi Webinar](https://speakerdeck.com/erikaheidi/hello-wolfi)
 
 ## Demo Steps Overview
 _These steps were executed on an Ubuntu 22.04 host Linux machine._
@@ -24,6 +24,9 @@ docker pull cgr.dev/chainguard/apko
 ```
 ### Generate melange signing keys
 
+```shell
+docker run --rm -v "${PWD}":/work cgr.dev/chainguard/melange keygen
+```
 ### Build the php package
 
 ```shell
