@@ -1,0 +1,8 @@
+packages/
+*.sbom
+*.cdx
+*.spdx.json
+*.rsa
+*.rsa.pub
+*.tar
+.idea

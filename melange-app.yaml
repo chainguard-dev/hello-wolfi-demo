@@ -1,0 +1,43 @@
+package:
+  name: hello-minicli
+  version: 0.1.0
+  description: Minicli melange demo
+  target-architecture:
+    - all
+  copyright:
+    - license: MIT
+      paths:
+        - "*"
+  dependencies:
+    runtime:
+      - php
+      - curl
+      - ca-certificates-bundle
+
+environment:
+  contents:
+    repositories:
+      - https://packages.wolfi.dev/bootstrap/stage3
+      - https://packages.wolfi.dev/os
+      - '@local /work/packages'
+    keyring:
+      - https://packages.wolfi.dev/bootstrap/stage3/wolfi-signing.rsa.pub
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    packages:
+      - busybox
+      - curl
+      - ca-certificates-bundle
+      - php@local
+      - composer@local
+
+pipeline:
+  - name: Build Minicli application
+    runs: |
+      MINICLI_HOME="${{targets.destdir}}/usr/share/minicli"
+      EXEC_DIR="${{targets.destdir}}/usr/bin"
+      mkdir -p "${MINICLI_HOME}" "${EXEC_DIR}"
+      cp ./hello-minicli/composer.json "${MINICLI_HOME}"
+      cp ./hello-minicli/composer.lock "${MINICLI_HOME}"
+      /usr/bin/composer install -d "${MINICLI_HOME}" --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
+      cp ./hello-minicli/minicli "${EXEC_DIR}"
+      chmod +x "${EXEC_DIR}/minicli"

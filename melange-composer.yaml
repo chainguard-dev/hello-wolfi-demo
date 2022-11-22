@@ -1,0 +1,45 @@
+package:
+  name: composer
+  version: 2.4.4
+  epoch: 0
+  description: "the PHP package manager"
+  target-architecture:
+    - x86_64
+  copyright:
+    - paths:
+        - "*"
+      attestation: TODO
+      license: MIT
+  dependencies:
+    runtime:
+      - php
+      - git
+
+environment:
+  contents:
+    repositories:
+      - https://packages.wolfi.dev/bootstrap/stage3
+      - https://packages.wolfi.dev/os
+      - '@local /work/packages'
+    keyring:
+      - https://packages.wolfi.dev/bootstrap/stage3/wolfi-signing.rsa.pub
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    packages:
+      - ca-certificates-bundle
+      - busybox
+      - php@local
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://getcomposer.org/download/${{package.version}}/composer.phar
+      expected-sha256: c252c2a2219956f88089ffc242b42c8cb9300a368fd3890d63940e4fc9652345
+      extract: "false"
+
+  - name: Install Composer
+    runs: |
+      set -x
+      EXEC_DIR="${{targets.destdir}}/usr/bin"
+      mkdir -p "${EXEC_DIR}"
+      mv composer.phar "${EXEC_DIR}/composer"
+      chmod +x "${EXEC_DIR}/composer"
