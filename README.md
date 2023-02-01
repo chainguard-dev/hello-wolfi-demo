@@ -1,7 +1,9 @@
 # hello-wolfi-demo
+
 Demo for the [Hello Wolfi Webinar](https://speakerdeck.com/erikaheidi/hello-wolfi)
 
 ## Demo Steps Overview
+
 _These steps were executed on an Ubuntu 22.04 host Linux machine._
 
 1. Make sure you have Docker installed on your machine
@@ -22,15 +24,17 @@ _These steps were executed on an Ubuntu 22.04 host Linux machine._
 docker pull cgr.dev/chainguard/melange
 docker pull cgr.dev/chainguard/apko
 ```
+
 ### Generate melange signing keys
 
 ```shell
 docker run --rm -v "${PWD}":/work cgr.dev/chainguard/melange keygen
 ```
+
 ### Build the php package
 
 ```shell
-docker run --privileged --rm -v "${PWD}":/work -- \                                                                              
+docker run --privileged --rm -v "${PWD}":/work -- \
   cgr.dev/chainguard/melange build melange-php.yaml \
   --arch x86_64 \
   --signing-key melange.rsa --keyring-append melange.rsa.pub
@@ -39,7 +43,7 @@ docker run --privileged --rm -v "${PWD}":/work -- \
 ### Build the composer package
 
 ```shell
-docker run --privileged --rm -v "${PWD}":/work -- \                                                                              
+docker run --privileged --rm -v "${PWD}":/work -- \
   cgr.dev/chainguard/melange build melange-composer.yaml \
   --arch x86_64 \
   --signing-key melange.rsa --keyring-append melange.rsa.pub
@@ -48,7 +52,7 @@ docker run --privileged --rm -v "${PWD}":/work -- \
 ### Build the app package
 
 ```shell
-docker run --privileged --rm -v "${PWD}":/work -- \                                                                              
+docker run --privileged --rm -v "${PWD}":/work -- \
   cgr.dev/chainguard/melange build melange-app.yaml \
   --arch x86_64 \
   --signing-key melange.rsa --keyring-append melange.rsa.pub
