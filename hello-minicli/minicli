@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 
 <?php
-
+ini_set('display_errors', '0');
 use Minicli\App;
 use Minicli\Curly\Client;
 use Minicli\Exception\CommandNotFoundException;

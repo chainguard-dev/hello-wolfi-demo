@@ -1,7 +1,7 @@
 package:
   name: composer
-  version: 2.4.4
-  epoch: 0
+  version: 2.8.3
+  epoch: 1
   description: "the PHP package manager"
   target-architecture:
     - x86_64
@@ -18,11 +18,9 @@ package:
 environment:
   contents:
     repositories:
-      - https://packages.wolfi.dev/bootstrap/stage3
       - https://packages.wolfi.dev/os
       - '@local /work/packages'
     keyring:
-      - https://packages.wolfi.dev/bootstrap/stage3/wolfi-signing.rsa.pub
       - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
     packages:
       - ca-certificates-bundle
@@ -33,7 +31,7 @@ pipeline:
   - uses: fetch
     with:
       uri: https://getcomposer.org/download/${{package.version}}/composer.phar
-      expected-sha256: c252c2a2219956f88089ffc242b42c8cb9300a368fd3890d63940e4fc9652345
+      expected-sha256: 8323b4105c6e166d47c9db93209370083f9e421743636e108c37d8c1126386ef
       extract: "false"
 
   - name: Install Composer

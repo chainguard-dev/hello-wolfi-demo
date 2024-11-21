@@ -1,27 +1,25 @@
 package:
   name: hello-minicli
   version: 0.1.0
+  epoch: 1
   description: Minicli melange demo
   target-architecture:
-    - all
+    - x86_64
   copyright:
     - license: MIT
       paths:
         - "*"
   dependencies:
     runtime:
-      - php
       - curl
       - ca-certificates-bundle
 
 environment:
   contents:
     repositories:
-      - https://packages.wolfi.dev/bootstrap/stage3
       - https://packages.wolfi.dev/os
       - '@local /work/packages'
     keyring:
-      - https://packages.wolfi.dev/bootstrap/stage3/wolfi-signing.rsa.pub
       - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
     packages:
       - busybox
