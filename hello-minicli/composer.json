@@ -1,7 +1,7 @@
 {
   "require": {
-    "minicli/minicli": "^3.2",
-    "minicli/curly": "^0.2.0",
+    "minicli/minicli": "^4.2.0",
+    "minicli/curly": "^0.2.2",
     "ext-json": "*"
   }
 }
