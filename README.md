@@ -1,6 +1,9 @@
 # hello-wolfi-demo
 Demo for the [Hello Wolfi Webinar](https://edu.chainguard.dev/open-source/wolfi/hello-wolfi/). 
 
+
+**NOTE: THIS DEMO IS DEPRECATED. Please refer to the [Building a Wolfi Package](https://edu.chainguard.dev/open-source/wolfi/building-a-wolfi-package/) guide for more information on how to build Wolfi packages.**
+
 ## Demo Steps Overview
 _These steps were executed on an Ubuntu 22.04 host Linux machine._
 
